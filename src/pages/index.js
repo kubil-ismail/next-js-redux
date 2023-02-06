@@ -12,12 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  
-  React.useEffect(() => {
-    dispatch(counter.increment());
-  }, [])
-  
-  console.log(state);
 
   return (
     <>
@@ -133,4 +127,10 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 }

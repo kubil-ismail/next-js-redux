@@ -1,11 +1,13 @@
 import "@/styles/globals.css";
+import { wrapper } from "@/redux/store";
 import { Provider } from "react-redux";
-import { store } from "@/redux/store";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, ...rest }) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <Component {...props.pageProps} />
     </Provider>
   );
 }
